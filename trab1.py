@@ -30,7 +30,7 @@ def main():
 		for j in range(len(matriz[i])):
 			somaatual += matriz[i][j]
 		mediaatual = somaatual/len(matriz[i])
-		print("A média do criterio {} é igual a {}".format(i, mediaatual))	
+		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
 
 	# Média ponderada
 
@@ -56,9 +56,29 @@ def main():
 				somadivisor  += qtdelemenetoatual
 				elementosjasomados.append(matriz[i][j])
 		mediaponderadaatual = somadividendo/somadivisor
-		print("A média ponderada do criterio {} é igual a {}".format(i, mediaponderadaatual))	
+		print("A média ponderada do alternativa {} é igual a {}".format(i, mediaponderadaatual))	
 
 	# Técnica Nominal de  Grupo
+
+	print("")
+	print("Técnica Nominal de Grupo")
+	print("")
+
+	for i in range(numlinhas):
+		somaatual = 0
+		for j in range(len(matriz[i])):
+			somaatual += matriz[i][j]
+		print("A pontuação do alternativa {} é igual a {}".format(i, somaatual))	
+		if i == 0:
+			maioresultado = somaatual
+			maioralternativa = i 
+		else:
+			if somaatual > maioresultado:
+				maioresultado = somaatual
+				maioralternativa = i 
+		
+	print("")	
+	print("A maior pontuação é da alternativa {} .".format(maioralternativa))	
 
 def geraMatriz(numlinhas, numcolunas):
 	matriz = []
