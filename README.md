@@ -9,9 +9,9 @@ Nele foram imlementadas em Python quatros operações estatísicas, recebendo co
 * Técnica Nominal de Grupo
 * Média de Windsor
 
-Data: 31/10/2016
-Prof.º: Henrique Dahora
-Aluno: Lucas de Souza Siqueira
-Turma: 7º Período (2016/2)
+Data: 31/10/2016··
+Prof.º: Henrique Dahora··
+Aluno: Lucas de Souza Siqueira··
+Turma: 7º Período (2016/2)··
 Curso: Bacharelado em Sistemas de Informação
 
