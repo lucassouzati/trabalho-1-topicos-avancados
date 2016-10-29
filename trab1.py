@@ -22,16 +22,8 @@ def main():
 
 	# Média
 
-	print("Média")
-	print("")
-
-	for i in range(numlinhas):
-		somaatual = 0
-		for j in range(len(matriz[i])):
-			somaatual += matriz[i][j]
-		mediaatual = somaatual/len(matriz[i])
-		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
-
+	media(matriz, numlinhas)
+	
 	# Média ponderada
 
 	print("")
@@ -147,5 +139,18 @@ def geraMatriz(numlinhas, numcolunas):
 			linha.append(num)
 		matriz.append(linha)
 	return matriz
+
+def media(matriz, numlinhas)
+	print("Média")
+	print("")
+
+	for i in range(numlinhas):
+		somaatual = 0
+		for j in range(len(matriz[i])):
+			somaatual += matriz[i][j]
+		mediaatual = somaatual/len(matriz[i])
+		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
+
+
 
 main()
