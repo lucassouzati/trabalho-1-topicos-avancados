@@ -5,18 +5,19 @@
 from random import randint
 from random import choice
 
-def main():
-	matriz = []
-	numlinhas= 10
 
+
+def main():
+	
+	numlinhas= 9
+	numcolunas = 10
+
+
+	matriz = geraMatriz(numlinhas, numcolunas)
 
 	for i in range(numlinhas):
-		linha = []
-		for j in range(10):
-			linha.append(choice([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 0.0]))
-		matriz.append(linha)
-
-	print(matriz)
+		print(matriz[i])	
+	
 	# print(len(matriz[1])
 
 	# Média
@@ -46,15 +47,36 @@ def main():
 		elementosjasomados = []
 		for j in range(len(matriz[i])):
 			if matriz[i][j] in elementosjasomados:
-				print("")
+				continue
 			else:	
 				for k in range(len(matriz[i])):
 					if(matriz[i][j] == matriz[i][k]):
 						qtdelemenetoatual += 1
 				somadividendo += matriz[i][j] * qtdelemenetoatual
 				somadivisor  += qtdelemenetoatual
-				elementosjasomados.append(matriz[j])
+				elementosjasomados.append(matriz[i][j])
 		mediaponderadaatual = somadividendo/somadivisor
 		print("A média ponderada do criterio {} é igual a {}".format(i, mediaponderadaatual))	
+
+	# Técnica Nominal de  Grupo
+
+def geraMatriz(numlinhas, numcolunas):
+	matriz = []
+	for i in range(numlinhas):
+		linha = []
+		for j in range(numcolunas):
+			achounumero = 0
+			colunaatual = []
+			for k in range(i):
+				colunaatual.append(matriz[k][j])
+			while (achounumero == 0):
+				num = choice([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
+				if num in colunaatual:
+					continue
+				else:
+					achounumero = 1
+			linha.append(num)
+		matriz.append(linha)
+	return matriz
 
 main()
