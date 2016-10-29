@@ -10,7 +10,7 @@ from random import choice
 def main():
 	
 	numlinhas= 9
-	numcolunas = 10
+	numcolunas = 9
 
 
 	matriz = geraMatriz(numlinhas, numcolunas)
@@ -40,7 +40,6 @@ def main():
 	
 
 	for i in range(numlinhas):
-		somaatual = 0
 		somadividendo = 0
 		somadivisor= 0
 		qtdelemenetoatual = 0
@@ -79,6 +78,56 @@ def main():
 		
 	print("")	
 	print("A maior pontuação é da alternativa {} .".format(maioralternativa))	
+
+	# Média de Windsor
+
+	print("")
+	print("Média de Windsor")
+	print("")
+	
+
+	for i in range(numlinhas):
+		qtddecadaelemento = []
+		somadecadaelemento = []
+		elementosjasomados = []
+		for j in range(len(matriz[i])):
+			if matriz[i][j] in elementosjasomados:
+				continue
+			else:	
+				somadecadaelemento.append(matriz[i][j]) 
+				qtddecadaelemento.append(1)
+				for k in range(j + 1, len(matriz[i])):
+					if(matriz[i][j] == matriz[i][k]):
+						somadecadaelemento[len(somadecadaelemento) - 1] += matriz[i][k] 
+						qtddecadaelemento[len(somadecadaelemento) - 1] += 1
+				#somadividendo += matriz[i][j] * qtdelemenetoatual
+				#somadivisor  += qtdelemenetoatual
+				elementosjasomados.append(matriz[i][j])
+		
+
+		#print(sum(somadecadaelemento))
+		#print(sum(qtddecadaelemento))
+
+		#removendo menor elemento
+		indexmenorelemento = qtddecadaelemento.index(min(qtddecadaelemento))
+		somadecadaelemento.pop(indexmenorelemento)
+		qtddecadaelemento.pop(indexmenorelemento)
+
+		#removendo maior elemento
+		indexmaiorelemento = qtddecadaelemento.index(max(qtddecadaelemento))
+		somadecadaelemento.pop(indexmaiorelemento)
+		qtddecadaelemento.pop(indexmaiorelemento)
+
+		#print(somadecadaelemento)
+		#print(qtddecadaelemento)
+
+		somatotal = sum(somadecadaelemento)
+
+		mediadewindsoratual = somatotal/len(matriz[i])
+		print("A média de Windsor do alternativa {} é igual a {}".format(i, mediadewindsoratual))	
+
+
+	
 
 def geraMatriz(numlinhas, numcolunas):
 	matriz = []
