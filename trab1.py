@@ -26,6 +26,49 @@ def main():
 	
 	# Média ponderada
 
+	mediaponderada(matriz, numlinhas)
+
+	# Técnica Nominal de  Grupo
+
+	tecnicanominaldegrupo(matriz, numlinhas)
+
+	# Média de Windsor
+
+	mediadewindsor(matriz, numlinhas)
+
+	
+
+def geraMatriz(numlinhas, numcolunas):
+	matriz = []
+	for i in range(numlinhas):
+		linha = []
+		for j in range(numcolunas):
+			achounumero = 0
+			colunaatual = []
+			for k in range(i):
+				colunaatual.append(matriz[k][j])
+			while (achounumero == 0):
+				num = choice([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
+				if num in colunaatual:
+					continue
+				else:
+					achounumero = 1
+			linha.append(num)
+		matriz.append(linha)
+	return matriz
+
+def media(matriz, numlinhas):
+	print("Média")
+	print("")
+
+	for i in range(numlinhas):
+		somaatual = 0
+		for j in range(len(matriz[i])):
+			somaatual += matriz[i][j]
+		mediaatual = somaatual/len(matriz[i])
+		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
+
+def mediaponderada(matriz, numlinhas):
 	print("")
 	print("Média Ponderada")
 	print("")
@@ -49,8 +92,7 @@ def main():
 		mediaponderadaatual = somadividendo/somadivisor
 		print("A média ponderada do alternativa {} é igual a {}".format(i, mediaponderadaatual))	
 
-	# Técnica Nominal de  Grupo
-
+def tecnicanominaldegrupo(matriz, numlinhas):
 	print("")
 	print("Técnica Nominal de Grupo")
 	print("")
@@ -71,8 +113,7 @@ def main():
 	print("")	
 	print("A maior pontuação é da alternativa {} .".format(maioralternativa))	
 
-	# Média de Windsor
-
+def mediadewindsor(matriz, numlinhas):
 	print("")
 	print("Média de Windsor")
 	print("")
@@ -117,40 +158,6 @@ def main():
 
 		mediadewindsoratual = somatotal/len(matriz[i])
 		print("A média de Windsor do alternativa {} é igual a {}".format(i, mediadewindsoratual))	
-
-
-	
-
-def geraMatriz(numlinhas, numcolunas):
-	matriz = []
-	for i in range(numlinhas):
-		linha = []
-		for j in range(numcolunas):
-			achounumero = 0
-			colunaatual = []
-			for k in range(i):
-				colunaatual.append(matriz[k][j])
-			while (achounumero == 0):
-				num = choice([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
-				if num in colunaatual:
-					continue
-				else:
-					achounumero = 1
-			linha.append(num)
-		matriz.append(linha)
-	return matriz
-
-def media(matriz, numlinhas)
-	print("Média")
-	print("")
-
-	for i in range(numlinhas):
-		somaatual = 0
-		for j in range(len(matriz[i])):
-			somaatual += matriz[i][j]
-		mediaatual = somaatual/len(matriz[i])
-		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
-
 
 
 main()
