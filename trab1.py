@@ -97,6 +97,9 @@ def tecnicanominaldegrupo(matriz, numlinhas):
 	print("Técnica Nominal de Grupo")
 	print("")
 
+	maioresresultados = []
+	maioresalternativas = []
+
 	for i in range(numlinhas):
 		somaatual = 0
 		for j in range(len(matriz[i])):
@@ -105,13 +108,35 @@ def tecnicanominaldegrupo(matriz, numlinhas):
 		if i == 0:
 			maioresultado = somaatual
 			maioralternativa = i 
+			maioresresultados.append(somaatual)
+			maioresalternativas.append(i)
 		else:
 			if somaatual > maioresultado:
 				maioresultado = somaatual
 				maioralternativa = i 
-		
-	print("")	
-	print("A maior pontuação é da alternativa {} .".format(maioralternativa))	
+				maioresresultados.append(somaatual)
+				maioresalternativas.append(i)
+			elif somaatual == maioresultado:
+				maioresresultados.append(somaatual)
+				maioresalternativas.append(i)
+	achou = 0
+	for i in range(len(maioresresultados)):
+		if maioresultado == maioresresultados[i]:
+			achou += 1
+	if achou == 1:
+		print("")	
+		print("A maior pontuação é da alternativa {} .".format(maioralternativa))	
+	
+	else:
+		#print(maioresresultados)
+		#print(max(maioresresultados))
+		resultado = ""
+		for i in range(len(maioresresultados)):
+			if(maioresresultados[i] >= maioresultado):
+				resultado += "alternativa {}, ".format(maioresalternativas[i])
+		print("")	
+		print("As maiores pontuações são {} .".format(resultado))	
+
 
 def mediadewindsor(matriz, numlinhas):
 	print("")
