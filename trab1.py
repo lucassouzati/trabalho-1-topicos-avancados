@@ -34,7 +34,7 @@ def main():
 
 	# Média de Windsor
 
-	mediadewindsor(matriz, numlinhas)
+	mediawindsorordenando(matriz, numlinhas)
 
 	
 
@@ -138,6 +138,7 @@ def tecnicanominaldegrupo(matriz, numlinhas):
 		print("As maiores pontuações são {} .".format(resultado))	
 
 
+
 def mediadewindsor(matriz, numlinhas):
 	print("")
 	print("Média de Windsor")
@@ -185,4 +186,18 @@ def mediadewindsor(matriz, numlinhas):
 		print("A média de Windsor do alternativa {} é igual a {}".format(i, mediadewindsoratual))	
 
 
+def mediawindsorordenando(matriz, numlinhas):
+	print("")
+	print("Média de Windsor")
+	print("")
+
+	for i in range(numlinhas):
+		somaatual = 0.0
+		matriz[i].sort()
+		#print(matriz[i])
+		for j in range(1, len(matriz[i]) - 1):
+			#print(matriz[i][j])
+			somaatual += matriz[i][j]
+		mediadewindsoratual = somaatual / len(matriz[i])
+		print("A média de Windsor da alternativa {} é igual a {}.".format(i, mediadewindsoratual))
 main()
