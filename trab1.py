@@ -11,7 +11,7 @@ def main():
 	
 	numlinhas= 9
 	numcolunas = 9
-
+	vetorPesos = [1, 3, 5, 1, 3, 5, 1, 3, 5]
 
 	matriz = geraMatriz(numlinhas, numcolunas)
 
@@ -26,7 +26,7 @@ def main():
 	
 	# Média ponderada
 
-	mediaponderada(matriz, numlinhas)
+	mediaponderada(matriz, numlinhas, vetorPesos)
 
 	# Técnica Nominal de  Grupo
 
@@ -68,7 +68,7 @@ def media(matriz, numlinhas):
 		mediaatual = somaatual/len(matriz[i])
 		print("A média do alternativa {} é igual a {}".format(i, mediaatual))	
 
-def mediaponderada(matriz, numlinhas):
+def mediaponderada(matriz, numlinhas, vetorPesos):
 	print("")
 	print("Média Ponderada")
 	print("")
@@ -200,4 +200,68 @@ def mediawindsorordenando(matriz, numlinhas):
 			somaatual += matriz[i][j]
 		mediadewindsoratual = somaatual / len(matriz[i])
 		print("A média de Windsor da alternativa {} é igual a {}.".format(i, mediadewindsoratual))
+
+
+def matrizConcordancia(tabela, nLinhas, nColunas, vetorPesos):
+	print("")
+	print("nMatriz de Concordância")
+	print("")
+
+	somaPesos = 0
+	mConcordancia = []
+
+	for x in range(len(vetorPesos)):
+		somaPesos += vetorPesos[x]
+
+	#Laço para alternativa a ser comparada
+	for i in range(nLinhas):
+		linha = []
+		
+		#Laço para o criterio a ser comparado
+		for j in range(len(tabela[i])):
+			#Laço para percorrer matriz
+			somatorioW = 0
+			for y in range(nColunas):
+				if tabela[i][y] >= tabela[j][y]:
+					somatorioW += vetorPesos[y]
+			result = 1.0/somaPesos * somatorioW
+			linha.append(round(result, 2))
+			#print result
+		mConcordancia.append(linha)
+		print mConcordancia[i], cidades[i]
+
+def matrizDiscordancia(tabela, nLinhas, nColunas):
+	print "\nMatriz de Discordância\n"
+
+	#Calculando a diferença entre o maior e menor valor de cada criterio
+	vetorDiferencas = []
+
+	for i in range(nLinhas):
+		valoresCriterio = []
+		for j in range(len(tabela[i])):
+			valoresCriterio.append(tabela[j][i])
+		valorMin = min(valoresCriterio)
+		valorMax = max(valoresCriterio)
+		result = valorMax - valorMin
+		vetorDiferencas.append(result)
+	#print vetorDiferencas
+
+	#Calculando Matriz de Discordancia
+	mDiscordancia = []
+
+	#Laço para alternativa a ser comparada
+	for i in range(nLinhas):
+		linha = []
+		#Laço para o criterio a ser comparado
+		for j in range(len(tabela[i])):
+			#Laço para percorrer matriz
+			vetorIndices = []
+			for y in range(nColunas):
+				vResultante = (tabela[j][y] - tabela[i][y])/vetorDiferencas[y]
+				#print vResultante
+				vetorIndices.append(round(vResultante, 2))
+			linha.append(max(vetorIndices))
+		mDiscordancia.append(linha)
+		print mDiscordancia[i], cidades[i]
+	
 main()
